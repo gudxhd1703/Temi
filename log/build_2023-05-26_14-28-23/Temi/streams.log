@@ -1,0 +1,36 @@
+[1.552s] Invoking command in '/home/khj/Temi': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/khj/Temi/build/Temi/prefix_override:/home/khj/Temi/install/Temi/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/Temi build --build-base /home/khj/Temi/build/Temi/build install --record /home/khj/Temi/build/Temi/install.log --single-version-externally-managed
+[2.076s] running egg_info
+[2.077s] creating build/Temi/Temi.egg-info
+[2.077s] writing build/Temi/Temi.egg-info/PKG-INFO
+[2.078s] writing dependency_links to build/Temi/Temi.egg-info/dependency_links.txt
+[2.078s] writing entry points to build/Temi/Temi.egg-info/entry_points.txt
+[2.078s] writing requirements to build/Temi/Temi.egg-info/requires.txt
+[2.078s] writing top-level names to build/Temi/Temi.egg-info/top_level.txt
+[2.078s] writing manifest file 'build/Temi/Temi.egg-info/SOURCES.txt'
+[2.080s] reading manifest file 'build/Temi/Temi.egg-info/SOURCES.txt'
+[2.080s] adding license file 'LICENSE'
+[2.082s] writing manifest file 'build/Temi/Temi.egg-info/SOURCES.txt'
+[2.082s] running build
+[2.082s] running build_py
+[2.082s] creating /home/khj/Temi/build/Temi/build
+[2.082s] creating /home/khj/Temi/build/Temi/build/lib
+[2.082s] creating /home/khj/Temi/build/Temi/build/lib/Temi
+[2.083s] copying Temi/__init__.py -> /home/khj/Temi/build/Temi/build/lib/Temi
+[2.083s] running install
+[2.085s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.085s]   warnings.warn(
+[2.085s] running install_lib
+[2.086s] creating /home/khj/Temi/install/Temi/lib/python3.10/site-packages/Temi
+[2.086s] copying /home/khj/Temi/build/Temi/build/lib/Temi/__init__.py -> /home/khj/Temi/install/Temi/lib/python3.10/site-packages/Temi
+[2.088s] byte-compiling /home/khj/Temi/install/Temi/lib/python3.10/site-packages/Temi/__init__.py to __init__.cpython-310.pyc
+[2.089s] running install_data
+[2.089s] creating /home/khj/Temi/install/Temi/share/ament_index
+[2.090s] creating /home/khj/Temi/install/Temi/share/ament_index/resource_index
+[2.090s] creating /home/khj/Temi/install/Temi/share/ament_index/resource_index/packages
+[2.090s] copying resource/Temi -> /home/khj/Temi/install/Temi/share/ament_index/resource_index/packages
+[2.090s] copying package.xml -> /home/khj/Temi/install/Temi/share/Temi
+[2.090s] running install_egg_info
+[2.094s] Copying build/Temi/Temi.egg-info to /home/khj/Temi/install/Temi/lib/python3.10/site-packages/Temi-0.0.0-py3.10.egg-info
+[2.094s] running install_scripts
+[2.137s] writing list of installed files to '/home/khj/Temi/build/Temi/install.log'
+[2.162s] Invoked command in '/home/khj/Temi' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/khj/Temi/build/Temi/prefix_override:/home/khj/Temi/install/Temi/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/Temi build --build-base /home/khj/Temi/build/Temi/build install --record /home/khj/Temi/build/Temi/install.log --single-version-externally-managed
