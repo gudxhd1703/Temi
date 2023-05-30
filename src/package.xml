@@ -5,13 +5,13 @@
   <version>0.0.1</version>
   <description>ROS2 Variable width rc car with raspberry pi4 </description>
   <maintainer email="gudxhd1703@gmail.com">Kim</maintainer>
-  <!-- <maintainer email=""> </maintainer> -->
-  <!-- <maintainer email=""> </maintainer> -->
-  <!-- <maintainer email=""> </maintainer> -->
+  <maintainer email="jeongwoo5058@naver.com">add </maintainer>
+  <maintainer email="kkt161@daum.net">ADD </maintainer>
+  <maintainer email="hidan0327@naver.com"> ADD</maintainer>
   <author email="gudxhd1703@gmail.com">Kim</author>
-  <!-- <author email="">Kim</author> -->
-  <!-- <author email="">Kim</author> -->
-  <!-- <author email="">Kim</author> -->
+  <author email="jeongwoo5058@naver.com">ADD</author>
+  <author email="kkt161@daum.net">ADD</author>
+  <author email="hidan0327@naver.com">ADD</author>
   <license> Apache License 2.0<license>
   <url>https://github.com/search?q=Temi&type=repositories<url>
 
