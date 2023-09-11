@@ -41,7 +41,7 @@ if __name__ == '__main__':
             time.sleep(1)
             Servo.SetPos(45)
             time.sleep(1)
-            Servo.SetPos(180)
+            Servo.SetPos(0)
             time.sleep(1)
 
     # Ctrl + C키를 누르면 종료 됩니다.
