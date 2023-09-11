@@ -37,11 +37,11 @@ if __name__ == '__main__':
         while True:
             Servo.SetPos(0)
             time.sleep(1)
-            Servo.SetPos(90)
+            Servo.SetPos(30)
+            time.sleep(1)
+            Servo.SetPos(45)
             time.sleep(1)
             Servo.SetPos(180)
-            time.sleep(1)
-            Servo.SetPos(90)
             time.sleep(1)
 
     # Ctrl + C키를 누르면 종료 됩니다.
