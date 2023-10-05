@@ -1,7 +1,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-package_name = 'Temi'
+package_name = 'temi'
 
 setup(
     name=package_name,
