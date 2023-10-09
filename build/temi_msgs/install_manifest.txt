@@ -52,9 +52,7 @@
 /home/khj/Temi/install/temi_msgs/share/temi_msgs/msg/MotorControl.msg
 /home/khj/Temi/install/temi_msgs/share/ament_index/resource_index/package_run_dependencies/temi_msgs
 /home/khj/Temi/install/temi_msgs/share/ament_index/resource_index/parent_prefix_path/temi_msgs
-/home/khj/Temi/install/temi_msgs/share/temi_msgs/environment/ament_prefix_path.sh
 /home/khj/Temi/install/temi_msgs/share/temi_msgs/environment/ament_prefix_path.dsv
-/home/khj/Temi/install/temi_msgs/share/temi_msgs/environment/path.sh
 /home/khj/Temi/install/temi_msgs/share/temi_msgs/environment/path.dsv
 /home/khj/Temi/install/temi_msgs/share/temi_msgs/local_setup.bash
 /home/khj/Temi/install/temi_msgs/share/temi_msgs/local_setup.sh

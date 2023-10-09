@@ -4,3 +4,5 @@ temi_msgs.egg-info/PKG-INFO
 temi_msgs.egg-info/SOURCES.txt
 temi_msgs.egg-info/dependency_links.txt
 temi_msgs.egg-info/top_level.txt
+temi_msgs/msg/__init__.py
+temi_msgs/msg/_motor_control.py

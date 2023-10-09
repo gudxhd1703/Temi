@@ -1,0 +1,3 @@
+[console_scripts]
+temi.py = temi.temi:main
+

@@ -1,0 +1,14 @@
+LICENSE
+package.xml
+setup.cfg
+setup.py
+../../build/temi/temi.egg-info/PKG-INFO
+../../build/temi/temi.egg-info/SOURCES.txt
+../../build/temi/temi.egg-info/dependency_links.txt
+../../build/temi/temi.egg-info/entry_points.txt
+../../build/temi/temi.egg-info/requires.txt
+../../build/temi/temi.egg-info/top_level.txt
+../../build/temi/temi.egg-info/zip-safe
+resource/temi
+temi/__init__.py
+temi/temi.py

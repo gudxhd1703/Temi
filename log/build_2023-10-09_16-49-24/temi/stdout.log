@@ -1,0 +1,38 @@
+running egg_info
+creating ../../build/temi/temi.egg-info
+writing ../../build/temi/temi.egg-info/PKG-INFO
+writing dependency_links to ../../build/temi/temi.egg-info/dependency_links.txt
+writing entry points to ../../build/temi/temi.egg-info/entry_points.txt
+writing requirements to ../../build/temi/temi.egg-info/requires.txt
+writing top-level names to ../../build/temi/temi.egg-info/top_level.txt
+writing manifest file '../../build/temi/temi.egg-info/SOURCES.txt'
+reading manifest file '../../build/temi/temi.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/temi/temi.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/khj/Temi/build/temi/build
+creating /home/khj/Temi/build/temi/build/lib
+creating /home/khj/Temi/build/temi/build/lib/temi
+copying temi/__init__.py -> /home/khj/Temi/build/temi/build/lib/temi
+copying temi/temi.py -> /home/khj/Temi/build/temi/build/lib/temi
+running install
+running install_lib
+creating /home/khj/Temi/install/temi/lib/python3.10/site-packages/temi
+copying /home/khj/Temi/build/temi/build/lib/temi/__init__.py -> /home/khj/Temi/install/temi/lib/python3.10/site-packages/temi
+copying /home/khj/Temi/build/temi/build/lib/temi/temi.py -> /home/khj/Temi/install/temi/lib/python3.10/site-packages/temi
+byte-compiling /home/khj/Temi/install/temi/lib/python3.10/site-packages/temi/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/khj/Temi/install/temi/lib/python3.10/site-packages/temi/temi.py to temi.cpython-310.pyc
+running install_data
+creating /home/khj/Temi/install/temi/share
+creating /home/khj/Temi/install/temi/share/ament_index
+creating /home/khj/Temi/install/temi/share/ament_index/resource_index
+creating /home/khj/Temi/install/temi/share/ament_index/resource_index/packages
+copying resource/temi -> /home/khj/Temi/install/temi/share/ament_index/resource_index/packages
+creating /home/khj/Temi/install/temi/share/temi
+copying package.xml -> /home/khj/Temi/install/temi/share/temi
+running install_egg_info
+Copying ../../build/temi/temi.egg-info to /home/khj/Temi/install/temi/lib/python3.10/site-packages/temi-0.0.1-py3.10.egg-info
+running install_scripts
+Installing temi.py script to /home/khj/Temi/install/temi/lib/temi
+writing list of installed files to '/home/khj/Temi/build/temi/install.log'
