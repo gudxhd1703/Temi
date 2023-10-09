@@ -1,4 +1,4 @@
-int32 vel_fr
-int32 vel_fl
-int32 vel_br
-int32 vel_bl
+float64 vel_fr
+float64 vel_fl
+float64 vel_br
+float64 vel_bl
