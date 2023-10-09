@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from temi_msgs/msg/MotorControl.msg
+// generated code does not contain a copyright notice
+
+
+module temi_msgs {
+  module msg {
+    struct MotorControl {
+      double velocity;
+
+      double direction_fr;
+
+      double direction_fl;
+
+      double direction_br;
+
+      double direction_bl;
+    };
+  };
+};

@@ -1,0 +1,19 @@
+{
+  "package_name": "temi_msgs",
+  "output_dir": "/home/khj/Temi/build/temi_msgs/rosidl_typesupport_introspection_c/temi_msgs",
+  "template_dir": "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/share/rosidl_typesupport_introspection_c/resource",
+  "idl_tuples": [
+    "/home/khj/Temi/build/temi_msgs/rosidl_adapter/temi_msgs:msg/MotorControl.idl"
+  ],
+  "target_dependencies": [
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/lib/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c",
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/local/lib/python3.10/dist-packages/rosidl_typesupport_introspection_c/__init__.py",
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/share/rosidl_typesupport_introspection_c/resource/idl__rosidl_typesupport_introspection_c.h.em",
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/share/rosidl_typesupport_introspection_c/resource/idl__type_support.c.em",
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/share/rosidl_typesupport_introspection_c/resource/msg__rosidl_typesupport_introspection_c.h.em",
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/share/rosidl_typesupport_introspection_c/resource/msg__type_support.c.em",
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/share/rosidl_typesupport_introspection_c/resource/srv__rosidl_typesupport_introspection_c.h.em",
+    "/home/khj/ros2_humble/install/rosidl_typesupport_introspection_c/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em",
+    "/home/khj/Temi/build/temi_msgs/rosidl_adapter/temi_msgs/msg/MotorControl.idl"
+  ]
+}

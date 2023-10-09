@@ -1,0 +1,6 @@
+{
+  "package_name": "temi_msgs",
+  "non_idl_tuples": [
+    "/home/khj/Temi/src/temi_msgs:msg/MotorControl.msg"
+  ]
+}
