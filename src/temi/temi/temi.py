@@ -3,7 +3,7 @@ from rclpy.node import Node
 import RPi.GPIO as GPIO
 from time import sleep
 
-from temi.msg import Velocity
+from temi.msg import MotorControl
 
 # 모터 상태
 STOP  = 0
@@ -68,10 +68,10 @@ class Temi(Node):
 
     def __init__(self):
         super().__init__('temi')
-        self.publisher = self.create_publisher(Velocity,'velocity',10)
+        self.publisher = self.create_publisher(VelocityDirection,'velocitydirection',10)
         timer_period = 0.3
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
     def timer_callback:
-        msg = Velocity()
-        setMotor(CH1, msg.
+        msg = MotorControl()
+        setMotor(CH1, 
