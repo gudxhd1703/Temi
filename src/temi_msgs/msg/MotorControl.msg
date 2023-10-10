@@ -1,5 +1,5 @@
 float64 velocity
-float64 direction_fr
-float64 direction_fl
-float64 direction_br
-float64 direction_bl
+int32 direction_fr
+int32 direction_fl
+int32 direction_br
+int32 direction_bl

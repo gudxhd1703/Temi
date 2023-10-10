@@ -65,6 +65,10 @@ def setMotorContorl(pwm, INA, INB, speed, stat):
 
 # 모터 제어함수 간단하게 사용하기 위해 한번더 래핑(감쌈)
 def setMotor(ch, speed, stat):
+    #모터 핀 설정
+#핀 설정후 PWM 핸들 얻어옴
+    pwmA = setPinConfig(ENA, IN1, IN2)
+
     if ch == 'CH1':
         setMotorContorl(pwmA, IN1, IN2, speed, stat)
 
@@ -86,15 +90,11 @@ class Temi(Node):
 
 
 def main(args=None):
+
     rp.init(args=args)
 
 # GPIO 모드 설정
     GPIO.setmode(GPIO.BCM)
-
-#모터 핀 설정
-#핀 설정후 PWM 핸들 얻어옴
-    pwmA = setPinConfig(ENA, IN1, IN2)
-
     
     temi_node = Temi()
     rp.spin(temi_node)
