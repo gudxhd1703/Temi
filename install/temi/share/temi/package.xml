@@ -1,22 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>temi</name>
-  <version>0.0.1</version>
-  <description>ROS2 Variable width rc car with raspberry pi4 </description>
-  <maintainer email="gudxhd1703@gmail.com">Kim</maintainer>
-  <maintainer email="jeongwoo5058@naver.com">Park</maintainer>
-  <maintainer email="kkt161@daum.net">Kwon</maintainer>
-  <maintainer email="hidan0327@naver.com">Choi</maintainer>
-  <author email="gudxhd1703@gmail.com">Kim</author>
-  <author email="jeongwoo5058@naver.com">Park</author>
-  <author email="kkt161@daum.net">Kwon</author>
-  <author email="hidan0327@naver.com">Choi</author>
-  <license> Apache License 2.0</license>
-  <url>https://github.com/search?q=Temi&type=repositories</url>
-
-  <depend>rclpy</depend>
-  <depend>std_msgs</depend>
+  <name>Temi</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="gudxhd1703@gmail.com">khj</maintainer>
+  <license>TODO: License declaration</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

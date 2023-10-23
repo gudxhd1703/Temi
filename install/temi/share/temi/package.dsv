@@ -1,3 +1,6 @@
-source;share/temi/hook/pythonpath.ps1
-source;share/temi/hook/pythonpath.dsv
-source;share/temi/hook/pythonpath.sh
+source;share/Temi/hook/pythonpath.ps1
+source;share/Temi/hook/pythonpath.dsv
+source;share/Temi/hook/pythonpath.sh
+source;share/Temi/hook/ament_prefix_path.ps1
+source;share/Temi/hook/ament_prefix_path.dsv
+source;share/Temi/hook/ament_prefix_path.sh

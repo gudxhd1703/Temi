@@ -16,7 +16,7 @@ fi
 _colcon_package_bash_source_script() {
   if [ -f "$1" ]; then
     if [ -n "$COLCON_TRACE" ]; then
-      echo "# . \"$1\""
+      echo ". \"$1\""
     fi
     . "$@"
   else
@@ -25,7 +25,7 @@ _colcon_package_bash_source_script() {
 }
 
 # source sh script of this package
-_colcon_package_bash_source_script "$_colcon_package_bash_COLCON_CURRENT_PREFIX/share/temi/package.sh"
+_colcon_package_bash_source_script "$_colcon_package_bash_COLCON_CURRENT_PREFIX/share/Temi/package.sh"
 
 unset _colcon_package_bash_source_script
 unset _colcon_package_bash_COLCON_CURRENT_PREFIX

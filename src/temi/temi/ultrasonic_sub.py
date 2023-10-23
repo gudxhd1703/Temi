@@ -1,8 +1,8 @@
 import rclpy
 from rclpy.node import Node
-from temi.msg import Ultrasonic
+from temi.msg import Ultrasonic, MotorControl
 
-
+STOP = 0
 class UltrasonicSubscriber(Node):
 
     def __init__(self):
@@ -19,7 +19,10 @@ class UltrasonicSubscriber(Node):
         distance = msg.data
         # 거리가 10cm 미만이면 경고 메시지 출력 
         if distance < 10.0: 
-             print('Warning: Object is too close! Distance:', distance, 'cm')
+            motor_msg = MotorControl()
+            motor_msg.velocity = STOP
+            self.motor_publisher.publish(motor_msg)
+            print('Warning: Object is too close! Distance:', distance, 'cm')
 
 
 def main(args=None):

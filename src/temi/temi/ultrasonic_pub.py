@@ -40,12 +40,12 @@ class UltrasonicPublisher(Node):
                 pulse_end = time.time()
 
            # 초음파가 반사되어 돌아오는 시간을 이용하여 거리 계산 
-           distance_cm= round((pulse_end - pulse_start) * 17150 ,2 )
+            distance_cm= round((pulse_end - pulse_start) * 17150 ,2 )
 
-           msg=Ultrasonic()
-           msg.data=distance_cm
+            msg=Ultrasonic()
+            msg.data=distance_cm
            # 해당 거리 정보를 토픽으로 발행 
-           self.publisher_[i].publish(msg)
+            self.publisher_[i].publish(msg)
 
 
 def main(args=None):
