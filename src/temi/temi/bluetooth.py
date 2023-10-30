@@ -16,6 +16,8 @@ class BluetoothNode(Node):
         print("Waiting for connection on RFCOMM channel %d" % self.port)
         self.client_sock, self.client_info = self.server_sock.accept()
         print("Accepted connection from ", self.client_info)
+        timer_period = 0.02
+        self.bluetooth_timer = self.create_timer(timer_period, self. bluetooth_callback)
 
     def bluetooth_callback(self):
         try:
