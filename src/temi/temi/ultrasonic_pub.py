@@ -1,4 +1,4 @@
-import rclpy
+import rclpy as rp
 from rclpy.node import Node
 from temi.msg import Ultrasonic
 
@@ -49,11 +49,11 @@ class UltrasonicPublisher(Node):
 
 
 def main(args=None):
-    rclpy.init(args=args)
+    rp.init(args=args)
 
     ultrasonic_publisher=UltrasonicPublisher()
 
-    rclpy.spin(ultrasonic_publisher)
+    rp.spin(ultrasonic_publisher)
 
 
 if __name__ == '__main__':

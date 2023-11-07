@@ -24,7 +24,7 @@ class BluetoothNode(Node):
             data = self.client_sock.recv(1024)
             if len(data) == 0: break
             print("received [%s]" % data)
-            msg.data = BluetoothData()
+            msg = BluetoothData()
             # TODO: Parse the received data and populate the msg fields
             self.publisher.publish(msg)
         except IOError:
