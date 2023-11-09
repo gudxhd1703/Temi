@@ -76,17 +76,15 @@ class Temi(Node):
 
     def __init__(self):
         super().__init__('temi')
-        self.publisher = self.create_publisher(MotorControl,'motorcontrol',10)
-        timer_period = 0.3
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.subscription = self.create_subscription(MotorControl,'motorcontrol',self.motor_callback,10)
 
-    def timer_callback(self):
+    def motor_callback(self):
         msg = MotorControl()
         setMotor(CH1,msg.velocity, msg.direction_fr)
         setMotor(CH1,msg.velocity, msg.direction_fl)
         setMotor(CH1,msg.velocity, msg.direction_br)
         setMotor(CH1,msg.velocity, msg.direction_bl)
-     
+ 
 
 
 def main(args=None):
@@ -95,14 +93,13 @@ def main(args=None):
 
 # GPIO 모드 설정
     GPIO.setmode(GPIO.BCM)
-    
+ 
     temi_node = Temi()
     rp.spin(temi_node)
 
     temi_node.destroy_node()
     GPIO.cleaup()
     rp.shutdown()
-    
 
 
 if __name__ == '__main__' :
