@@ -12,7 +12,7 @@ class Control(Node):
 
     def __init__(self):
         super().__init__('control')
-        self.publisher = self.create_publisher(MotorControl,'motorcontorl',10)
+        self.publisher = self.create_publisher(MotorControl,'motorcontrol',10)
         self.ultrasonic_data = [None] * 4  # Initialize storage for ultrasonic data
         self.bluetooth_data = None  # Initialize storage for bluetooth data
         self.motor_data = [None]*4
