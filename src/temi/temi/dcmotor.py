@@ -72,10 +72,10 @@ def setMotor(ch, speed, stat):
     if ch == 'CH1':
         setMotorContorl(pwmA, IN1, IN2, speed, stat)
 
-class Temi(Node):
+class Dcmotor(Node):
 
     def __init__(self):
-        super().__init__('temi')
+        super().__init__('dcmotor')
         self.subscription = self.create_subscription(MotorControl,'motorcontrol',self.motor_callback,10)
 
     def motor_callback(self):
@@ -94,14 +94,14 @@ def main(args=None):
 # GPIO 모드 설정
     GPIO.setmode(GPIO.BCM)
  
-    temi_node = Temi()
+    dcmotor_node = Dcmotor()
     
     try:
-        rp.spin(temi_node)
+        rp.spin(dcmotor_node)
     except KeyboardInterrupt:
         pass
     finally:
-        temi_node.destroy_node()
+        dcmotor_node.destroy_node()
         GPIO.cleaup()
         rp.shutdown()
 

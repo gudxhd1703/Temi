@@ -22,7 +22,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'temi = temi.temi:main',
+            'motor = temi.dcmotor:main',
             'control = temi.control:main',
             'ultrasonic_pub = temi.ultrasonic:main',
             'bluetooth= temi.bluetooth:main'
