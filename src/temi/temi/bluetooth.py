@@ -1,49 +1,43 @@
-import bluetooth
-import rclpy as rp
-import rclpy.node as Node
+import rclpy
+from rclpy.node import Node
 from temi_msgs.msg import BluetoothData
+import bluetooth
 
-class BluetoothNode(Node):
-
+class BluetoothCommunicationNode(Node):
     def __init__(self):
-        super().__init__('bluetooth_node')
-        self.publisher = self.create_publisher(BluetoothData, 'bluetooth_data', 10)
+        super().__init__('bluetooth_communication_node')
+        self.publisher_ = self.create_publisher(BluetoothData, 'bluetooth_data', 10)
+        self.timer_period = 0.5  # seconds
+        self.timer = self.create_timer(self.timer_period, self.timer_callback)
+        self.bluetooth_address = "5C:CB:99:9E:7C:75"  # Replace with your Android's Bluetooth address
+        self.port = 1  # Bluetooth port may vary device to device
         self.server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-        self.server_sock.bind(("", bluetooth.PORT_ANY))
+        self.server_sock.bind(("", self.port))   ##   server_sock.bind(("", bluetooth.PORT_ANY))  자동으로 포트번호 선택하게 하는 법
         self.server_sock.listen(1)
-        self.port = self.server_sock.getsockname()[1]
-        bluetooth.advertise_service(self.server_sock, "SampleServer", service_id=bluetooth.SERVICE_ID, service_classes=[bluetooth.SERVICE_ID, bluetooth.SERIAL_PORT_CLASS], profiles=[bluetooth.SERIAL_PORT_PROFILE])
-        print("Waiting for connection on RFCOMM channel %d" % self.port)
+        self.get_logger().info('Waiting for connection from Android device')
         self.client_sock, self.client_info = self.server_sock.accept()
-        print("Accepted connection from ", self.client_info)
-        timer_period = 0.02
-        self.bluetooth_timer = self.create_timer(timer_period, self. bluetooth_callback)
+        self.get_logger().info(f'Accepted connection from {self.client_info}')
 
-    def bluetooth_callback(self):
-        try:
-            data = self.client_sock.recv(1024)
-            if len(data) == 0: break
-            received = data.decode("ascii")
-            print("received [%s]" % data)
-            ## test
-            print(received)
+    def timer_callback(self):
+        data = self.client_sock.recv(1024)  # Buffer size may vary based on your needs
+        if data:
+            message = data.decode("utf-8")
+            self.get_logger().info('Publishing: "%s"' % message)
             msg = BluetoothData()
-            msg.data = received   ## data 일 수 도
-            self.publisher.publish(msg)
-        except IOError:
-            pass
+            msg.data = message
+            self.publisher_.publish(msg)
 
-    def shutdown(self):
+    def __del__(self):
         self.client_sock.close()
         self.server_sock.close()
-        print("Disconnected")
+        self.get_logger().info('Closed Bluetooth connection')
 
 def main(args=None):
-    rp.init(args=args)
-    bluetooth_node = BluetoothNode()
-    rp.spin(bluetooth_node)
-    bluetooth_node.shutdown()
-    rp.shutdown()
+    rclpy.init(args=args)
+    bluetooth_communication_node = BluetoothCommunicationNode()
+    rclpy.spin(bluetooth_communication_node)
+    bluetooth_communication_node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
