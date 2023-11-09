@@ -18,41 +18,46 @@ class Control(Node):
         self.subscription_ultrasonic = [self.create_subscription(
             Ultrasonic,
             'ultrasonic'+str(i),
-            self.control_callback,
+            self.ultrasonic_callback(i),
             10) for i in range(4)]
-        self.subscripton_bluetooth = self.create_subscription(BluetoothData,'bluetooth_data', self.control_callback,10)
+        self.subscripton_bluetooth = self.create_subscription(BluetoothData,'bluetooth_data', self.bluetooth_callback,10)
 
-    def control_callback(self):
+    def ultrasonic_callback(self, index):
+        def callback(ultrasonic_msg):
+            self.ultrasonic_data[index] = ultrasonic_msg
+            self.control_logic()
+        return callback
+    
+    def bluetooth_callback(self, bluetooth_msg):
+        self.bluetooth_data = bluetooth_msg
+        self.control_logic()
+    
+    def control_logic(self):
         motor_msg = MotorControl()
-        ultrasonic_msg = Ultrasonic()
-        bluetooth_msg = BluetoothData()
 
-        if ultrasonic_msg.data < 10:  ## 거리수정해야함
-            motor_msg.velocity = 0
-        elif bluetooth_msg.data == 1:
-            if -9<motor_msg.velocity < 0:
-                motor_msg.velocity
-            elif 0< motor_msg.velocity:    
+        # Check the ultrasonic data and adjust motor_msg accordingly
+        for sensor_data in self.ultrasonic_data:
+            if sensor_data is not None and sensor_data.data < 10:  # Example condition
+                motor_msg.velocity = 0
+                break
+
+        # Check the bluetooth data and adjust motor_msg accordingly
+        if self.bluetooth_data is not None:
+            if self.bluetooth_data.data == 1:
                 motor_msg.velocity += speed_change
-        
-        elif bluetooth_msg.data == 2:
-            if -9<motor_msg.velocity < 0:
-                motor_msg.velocity
-            elif 0< motor_msg.velocity:    
-                motor_msg.velocity += speed_change    
-                        
-    ##### 수정
-        elif bluetooth_msg.data == left: ## 좌회전
-            motor_msg.velocity = 0
-            self.wheel_control(left)
+            elif self.bluetooth_data.data == 2:
+                motor_msg.velocity -= speed_change
+            elif self.bluetooth_data.data == left:
+                motor_msg.velocity = 0
+                self.wheel_control(left)
+            elif self.bluetooth_data.data == right:
+                motor_msg.velocity = 0
+                self.wheel_control(right)
+            elif self.bluetooth_data.data == transformer:
+                motor_msg.velocity = 0
+                self.wheel_control(transformer)
 
-        elif bluetooth_msg.data == right: ## 우회전
-            motor_msg.velocity = 0
-            self.wheel_control(right)
-
-        elif bluetooth_msg.data == transformer:
-            motor_msg.velocity = 0
-            self.wheel_control(transformer)
+        # Publish the motor command
         self.publisher.publish(motor_msg)
      
     def wheel_control(self, direction):
