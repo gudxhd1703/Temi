@@ -95,12 +95,15 @@ def main(args=None):
     GPIO.setmode(GPIO.BCM)
  
     temi_node = Temi()
-    rp.spin(temi_node)
-
-    temi_node.destroy_node()
-    GPIO.cleaup()
-    rp.shutdown()
-
+    
+    try:
+        rp.spin(temi_node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        temi_node.destroy_node()
+        GPIO.cleaup()
+        rp.shutdown()
 
 if __name__ == '__main__' :
     main()

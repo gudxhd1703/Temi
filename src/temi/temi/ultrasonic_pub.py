@@ -8,8 +8,8 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 # 초음파 센서의 TRIG 및 ECHO 핀에 연결된 GPIO 번호 설정
-TRIG = [22,23,24,25] 
-ECHO = [27,28,29,30]
+TRIG = [17,27,22,23] 
+ECHO = [24,10,9,11]
 
 class UltrasonicPublisher(Node):
 
@@ -49,13 +49,17 @@ class UltrasonicPublisher(Node):
 
 
 def main(args=None):
+    
     rclpy.init(args=args)
 
-    ultrasonic_publisher=UltrasonicPublisher()
-
-    rclpy.spin(ultrasonic_publisher)
-    GPIO.cleanup()
-    ultrasonic_publisher.destroy_node()
+    try:
+        ultrasonic_publisher=UltrasonicPublisher()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        rclpy.spin(ultrasonic_publisher)
+        GPIO.cleanup()
+        ultrasonic_publisher.destroy_node()
 
 if __name__ == '__main__':
     main()

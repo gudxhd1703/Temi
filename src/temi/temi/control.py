@@ -71,11 +71,13 @@ def main(args=None):
     rp.init(args=args)
 
     control_node = Control()
- 
-    rp.spin(control_node)
- 
-    control_node.destroy_node()
-    rp.shutdown()
+    try:
+        rp.spin(control_node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        control_node.destroy_node()
+        rp.shutdown()
 
 if __name__ == '__main__':
     main()

@@ -16,7 +16,7 @@ setup(
     zip_safe=True,
     maintainer='Kim,Park,Kwon,Choi',
     maintainer_email='gudxhd1703@gmail.com, jeongwoo5058@naver.com, kkt161@daum.net, hidan0327@naver.com',
-    keywords=['ROS'],
+    keywords=['ROS2'],
     description='ROS2 Variable width rc car with raspberry pi4',
     license='Apache License, Version 2.0',
     tests_require=['pytest'],
