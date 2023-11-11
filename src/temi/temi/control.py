@@ -1,18 +1,19 @@
 import rclpy as rp
 from rclpy.node import Node
 
-from temi_msgs.msg import Ultrasonic, MotorControl, BluetoothData
+from temi_msgs.msg import Ultrasonic, MotorControl, BluetoothData, Transform
 
 stop = 0
 speed_change = 10
 left = 3
 right = 4
 transformer = 5
+
 class Control(Node):
 
     def __init__(self):
         super().__init__('control')
-        self.publisher = self.create_publisher(MotorControl,'motorcontrol',10)
+        self.motor_publisher = self.create_publisher(MotorControl,'motorcontrol',10)
         self.ultrasonic_data = [None] * 4  # Initialize storage for ultrasonic data
         self.bluetooth_data = None  # Initialize storage for bluetooth data
         self.motor_data = [None]*4
@@ -23,6 +24,8 @@ class Control(Node):
             10) for i in range(4)]
         self.subscripton_bluetooth = self.create_subscription(BluetoothData,'bluetooth_data', self.bluetooth_callback,10)
         self.motor_msg = MotorControl()
+        self.transform_publisher = self.creat.publisher(Transform,'transfrom',10)
+        self.transform_msg = Transform()
 
     def ultrasonic_callback(self, index):
         def callback(ultrasonic_msg):
@@ -38,7 +41,7 @@ class Control(Node):
 
         # Check the ultrasonic data and adjust motor_msg accordingly
         for sensor_data in self.ultrasonic_data:
-            if sensor_data is not None and sensor_data.data < 10:  # Example condition
+            if sensor_data is not None and sensor_data.data < 10: 
                 self.motor_msg.velocity = 0
                 break
 
@@ -57,10 +60,13 @@ class Control(Node):
             elif self.bluetooth_data.data == transformer:
                 self.motor_msg.velocity = 0
                 self.wheel_control(transformer)
+                self.transform_msg.check = 1
+                
 
-        # Publish the motor command
-        self.publisher.publish(self.motor_msg)
-     
+        # Publish
+        self.motor_publisher.publish(self.motor_msg)
+        self.transform_publisher.publish(self.transform_msg)
+
     def wheel_control(self, direction):
         if direction == left:
             self.motor_msg.direction_fr = 0
