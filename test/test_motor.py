@@ -85,12 +85,12 @@ pwmB = setPinConfig(ENB, IN3, IN4)
 #제어 시작
 
 # 앞으로 80프로 속도로
-setMotor(CH1, 10, FORWARD)
+setMotor(CH1, 50, FORWARD)
 sleep(35)
 
 #정지
-setMotor(CH1, 80, STOP)
-setMotor(CH2, 80, STOP)
+setMotor(CH1, 0, STOP)
+setMotor(CH2, 0, STOP)
 
 # 종료
 GPIO.cleanup()
