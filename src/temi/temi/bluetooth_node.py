@@ -30,12 +30,14 @@ class BluetoothCommunicationNode(Node):
     def timer_callback(self):
         data = self.client_sock.recv(1024)  # Buffer size may vary based on your needs
         try:
-            while True:
+            try:
                 message = data.decode("utf-8")  ## ascii일수도 decode 안해도 될수도
                 self.get_logger().info('Publishing: "%s"' % message)
                 msg = BluetoothData()
                 msg.data = message
-                self.publisher_.publish(msg)
+            except UnboundLocalError:
+                self.get_logger().error('Received data could not be decoded as UTF-8.')
+            self.publisher_.publish(msg)
 
         except:
             pass

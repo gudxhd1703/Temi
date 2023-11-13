@@ -12,7 +12,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools','PyBluez','RPi.GPIO '],
+    install_requires=['setuptools','PyBluez','RPi.GPIO','adafruit_servokit'],
     zip_safe=True,
     maintainer='Kim,Park,Kwon,Choi',
     maintainer_email='gudxhd1703@gmail.com, jeongwoo5058@naver.com, kkt161@daum.net, hidan0327@naver.com',
@@ -22,10 +22,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'motor = temi.dcmotor:main',
-            'control = temi.control:main',
-            'ultrasonic_pub = temi.ultrasonic:main',
-            'bluetooth= temi.bluetooth:main'
+            'motor = temi.dcmotor_node:main',
+            'control = temi.control_node:main',
+            'ultrasonic_pub = temi.ultrasonic_node:main',
+            'bluetooth= temi.bluetooth_node:main'
         ],
     },
 )
