@@ -26,7 +26,7 @@ class SG90_92R_Class:
     # 종료처리
     def Cleanup(self):
         # 서보모터를 90도로 재설정
-        self.SetPos(90)
+        self.SetPos(0)
         time.sleep(1)
 
 # 여기가 시작하는 메인 입니다.
@@ -36,13 +36,8 @@ if __name__ == '__main__':
     try:
         while True:
             Servo.SetPos(0)
-            time.sleep(1)
-            Servo.SetPos(30)
-            time.sleep(1)
-            Servo.SetPos(45)
-            time.sleep(1)
-            Servo.SetPos(0)
-            time.sleep(1)
+#           Servo.SetPos(45)
+            time.sleep(10)
 
     # Ctrl + C키를 누르면 종료 됩니다.
     except KeyboardInterrupt:

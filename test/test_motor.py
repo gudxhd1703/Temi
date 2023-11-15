@@ -21,13 +21,11 @@ LOW = 0
 # 실제 핀 정의
 #PWM PIN
 ENA = 13  #33 pin
-ENB = 0   #27 pin
 
 #GPIO PIN
 IN1 = 19  #35 pin
 IN2 = 26  #37 pin
-IN3 = 6   #31 pin
-IN4 = 5   #29 pin
+
 
 # 핀 설정 함수
 def setPinConfig(EN, INA, INB):
@@ -68,30 +66,23 @@ def setMotor(ch, speed, stat):
     if ch == CH1:
         #pwmA는 핀 설정 후 pwm 핸들을 리턴 받은 값이다.
         setMotorContorl(pwmA, IN1, IN2, speed, stat)
-    else:
+#  else:
         #pwmB는 핀 설정 후 pwm 핸들을 리턴 받은 값이다.
-        setMotorContorl(pwmB, IN3, IN4, speed, stat)
+#       setMotorContorl(pwmB, IN3, IN4, speed, stat)
 
 
 # GPIO 모드 설정
 GPIO.setmode(GPIO.BCM)
-
 #모터 핀 설정
 #핀 설정후 PWM 핸들 얻어옴
 pwmA = setPinConfig(ENA, IN1, IN2)
-pwmB = setPinConfig(ENA, IN3, IN4)
-
-
-#제어 시작
 
 # 앞으로 80프로 속도로
 setMotor(CH1, 50, FORWARD)
-setMotor(CH2, 50, FORWARD)
-sleep(35)
+sleep(10)
 
 #정지
 setMotor(CH1, 0, STOP)
-setMotor(CH2, 0, STOP)
 
 # 종료
 GPIO.cleanup()
