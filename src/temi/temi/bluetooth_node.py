@@ -10,7 +10,7 @@ class BluetoothCommunicationNode(Node):
         self.port = 1  # Bluetooth port may vary device to device
         self.host = "" # '블루투스 컨트롤러 맥 주소'를 직접 입력해도 됨  
         # 확인후 수정   https://hybridego.net/entry/raspberry-pi-bluetoothctl-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4
-        self.uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee" 
+        self.uuid = "00001101-0000-1000-8000-00805F9B34FB" 
         self.publisher_ = self.create_publisher(BluetoothData, 'bluetooth_data', 10)
         self.timer_period = 0.5  # seconds
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
