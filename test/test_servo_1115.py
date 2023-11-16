@@ -1,6 +1,5 @@
 #pip3 install adafruit-circuitpython-servokit
 
-import rclpy as rp
 from adafruit_servokit import ServoKit #for motor_driver
 import time
 
