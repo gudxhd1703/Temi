@@ -37,7 +37,7 @@ if __name__ == '__main__':
         while True:
             Servo.SetPos(0)
 #           Servo.SetPos(45)
-            time.sleep(10)
+            time.sleep(30)
 
     # Ctrl + C키를 누르면 종료 됩니다.
     except KeyboardInterrupt:
