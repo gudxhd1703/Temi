@@ -1,0 +1,15 @@
+ python3 test_bluetooth.py 
+Traceback (most recent call last):
+  File "/home/temi/.local/lib/python3.10/site-packages/bluetooth/bluez.py", line 271, in advertise_service
+    _bt.sdp_advertise_service (sock._sock, name, service_id, \
+_bluetooth.error: (2, 'No such file or directory')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/temi/Temi/test/test_bluetooth.py", line 9, in <module>
+    bluetooth.advertise_service(server_sock, "SampleServer",
+  File "/home/temi/.local/lib/python3.10/site-packages/bluetooth/bluez.py", line 275, in advertise_service
+    raise BluetoothError (*e.args)
+bluetooth.btcommon.BluetoothError: [Errno 2] No such file or directory
+
