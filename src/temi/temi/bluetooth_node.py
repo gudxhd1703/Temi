@@ -7,7 +7,7 @@ class BluetoothCommunicationNode(Node):
     def __init__(self):
         super().__init__('bluetooth_communication_node')
         self.address = "5C:CB:99:9E:7C:75"  # Replace with your Android's Bluetooth address
-        self.port = 1  # Bluetooth port may vary device to device
+        self.port = bt.PORT_ANY  # Bluetooth port may vary device to device
         self.host = "" # '블루투스 컨트롤러 맥 주소'를 직접 입력해도 됨  
         # 확인후 수정   https://hybridego.net/entry/raspberry-pi-bluetoothctl-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4
         self.uuid = "00001101-0000-1000-8000-00805F9B34FB" 
@@ -17,6 +17,7 @@ class BluetoothCommunicationNode(Node):
         self.server_sock = bt.BluetoothSocket(bt.RFCOMM)
         self.server_sock.bind((self.host, self.port))   ##   server_sock.bind(("", bluetooth.PORT_ANY))  자동으로 포트번호 선택하게 하는 법
         self.server_sock.listen(1)
+        self.server_sock.settimeout(10)
         bt.advertise_service(
             self.server_sock, "Temi",
             service_id = self.uuid,
