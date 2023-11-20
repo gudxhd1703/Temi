@@ -19,9 +19,8 @@ class SG90_92R_Class:
 
     # 서보모터 위치 설정
     def SetPos(self, pos):
-        pulse = (650 - 150) * pos / 180 + 150 + self.m_ZeroOffset
+        pulse = (512 - 102) * pos / 180 + 102 + self.m_ZeroOffset
         self.mPwm.set_pwm(self.mChannel, 0, int(pulse))
-
     # 종료처리
     def Cleanup(self):
         # 서보모터를 90도로 재설정
