@@ -13,21 +13,21 @@ pca = PCA9685(i2c)
 
 pca.frequency = 50
 
-servo7 = servo.Servo(pca.channels[7])
+servo1 = servo.Servo(pca.channels[7])
+#servo2 = servo.Servo(pca.channels[2])
+#servo3 = servo.Servo(pca.channels[3])
+#servo4 = servo.Servo(pca.channels[4])
+
 
 # We sleep in the loops to give the servo time to move into position.
-for i in range(180):
-    servo7.angle = i
-    time.sleep(0.03)
-for i in range(180):
-    servo7.angle = 180 - i
-    time.sleep(0.03)
-
-# You can also specify the movement fractionally.
-fraction = 0.0
-while fraction < 1.0:
-    servo7.fraction = fraction
-    fraction += 0.01
-    time.sleep(0.03)
-
+#try:
+#    while True:
+servo1.angle = 90
+#servo2.angle = 90
+#       servo3.angle = 0
+#        servo4.angle = 0
+#except KeyboardInterrupt:
 pca.deinit()
+   
+# You can also specify the movement fractionally.
+
