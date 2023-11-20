@@ -1,5 +1,4 @@
 import time
-import RPi.GPIO as GPIO
 import Adafruit_PCA9685
 
 # SG92R를 컨트롤하기 위한 클래스
@@ -26,8 +25,8 @@ class SG90_92R_Class:
     # 종료처리
     def Cleanup(self):
         # 서보모터를 90도로 재설정
-        self.SetPos(90)
         time.sleep(1)
+
 
 # 여기가 시작하는 메인 입니다.
 if __name__ == '__main__':
@@ -35,9 +34,10 @@ if __name__ == '__main__':
 
     try:
         while True:
-            Servo.SetPos(90)
+            angle = int(input('angle:' ))
+            Servo.SetPos(angle)
 #           Servo.SetPos(45)
-            time.sleep(25)
+#            time.sleep(25)
 #            Servo.SetPos(30)
 #           time.sleep(5)
 #           servo.SetPos(90)

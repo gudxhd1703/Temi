@@ -6,17 +6,17 @@ import time
 servo_kit = ServoKit(channels=16)
 servo_kit.frequency = 50
 
-servo_kit.servo[0].set_pulsewidth_range(500, 2500)
+servo_kit.servo[0].set_pulse_width_range(500, 2500)
 servo_kit.servo[0].channel = 1
-servo_kit.servo[1].set_pulsewidth_range(500, 2500)
+servo_kit.servo[1].set_pulse_width_range(500, 2500)
 servo_kit.servo[1].channel = 7
-servo_kit.servo[2].set_pulsewidth_range(500, 2500)
+servo_kit.servo[2].set_pulse_width_range(500, 2500)
 servo_kit.servo[2].channel = 8
-servo_kit.servo[3].set_pulsewidth_range(500, 2500)
+servo_kit.servo[3].set_pulse_width_range(500, 2500)
 servo_kit.servo[3].channel = 25
         
 while 1:  
-    servo_kit.update()                     #실제로는 이때 모터가 돌아감
+#    servo_kit.update()                     #실제로는 이때 모터가 돌아감
         
     print("왼쪽위 : ",servo_kit.servo[0].angle,"오른쪽위 : ",servo_kit.servo[1].angle)    #유저를 위한 에코
     print("왼쪽아래 : ",servo_kit.servo[2].angle,"오른쪽아래 : ",servo_kit.servo[3].angle)
