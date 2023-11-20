@@ -16,7 +16,7 @@ servo_kit.servo[3].set_pulse_width_range(500, 2500)
 servo_kit.servo[3].channel = 25
         
 while 1:  
-#    servo_kit.update()                     #실제로는 이때 모터가 돌아감
+    servo_kit.update()                     #실제로는 이때 모터가 돌아감
         
     print("왼쪽위 : ",servo_kit.servo[0].angle,"오른쪽위 : ",servo_kit.servo[1].angle)    #유저를 위한 에코
     print("왼쪽아래 : ",servo_kit.servo[2].angle,"오른쪽아래 : ",servo_kit.servo[3].angle)

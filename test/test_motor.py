@@ -81,11 +81,12 @@ pwmB = setPinConfig(ENB, IN3, IN4)
 
 
 # 앞으로 80프로 속도로
-setMotor(CH1, 100, FORWARD)
-setMotor(CH2, 100, FORWARD)
-
+while True:    
+    setMotor(CH1, 100, FORWARD)
+    setMotor(CH2, 100, FORWARD)
+    if (input()):
+        break
 #정지
-A=input("qw")
 setMotor(CH1, 0, STOP)
 setMotor(CH2, 0, STOP)
 # 종료
