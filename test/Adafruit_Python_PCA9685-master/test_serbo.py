@@ -32,7 +32,7 @@ if __name__ == '__main__':
     Servo_1 = SG90_92R_Class(Channel = 4, ZeroOffset = -10)
     Servo_2 = SG90_92R_Class(Channel = 5, ZeroOffset = -10)
     Servo_3 = SG90_92R_Class(Channel = 6, ZeroOffset = -10)
-    Servo_4 = SG90_92R_Class(Channel = 7, ZeroOffset = -10)
+    Servo_4 = SG90_92R_Class(Channel = 1, ZeroOffset = -10)
 
     
     try:
