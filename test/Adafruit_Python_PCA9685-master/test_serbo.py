@@ -29,19 +29,19 @@ class SG90_92R_Class:
 
 # 여기가 시작하는 메인 입니다.
 if __name__ == '__main__':
-    Servo_1 = SG90_92R_Class(Channel = 4, ZeroOffset = -10)
-    Servo_2 = SG90_92R_Class(Channel = 5, ZeroOffset = -10)
-    Servo_3 = SG90_92R_Class(Channel = 6, ZeroOffset = -10)
-    Servo_4 = SG90_92R_Class(Channel = 1, ZeroOffset = -10)
+    Servo_1 = SG90_92R_Class(Channel = 1, ZeroOffset = -10)
+    Servo_2 = SG90_92R_Class(Channel = 2, ZeroOffset = -10)
+    Servo_3 = SG90_92R_Class(Channel = 3, ZeroOffset = -10)
+    Servo_4 = SG90_92R_Class(Channel = 4, ZeroOffset = -10)
 
     
     try:
         while True:
 #            angle = 100
             angle = int(input('angle:' ))
-#            Servo_1.SetPos(angle)
-#            Servo_2.SetPos(angle)
-#            Servo_3.SetPos(angle)
+            Servo_1.SetPos(angle)
+            Servo_2.SetPos(angle)
+            Servo_3.SetPos(angle)
             Servo_4.SetPos(angle)
 #           Servo.SetPos(45)
 #            time.sleep(25)
