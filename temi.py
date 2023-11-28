@@ -167,7 +167,7 @@ try:
                     client_sock.send("폭변환 상태에서 dc모터를 돌릴까요? 1:예 2:아니오(메인으로) \n")
                     data = client_sock.recv(1024)
                     bluetooth_input = int(data)
-                    if bluetooth_input == 1:
+                    if bluetooth_input == 2:
                         continue
                     else:
                         client_sock.send("얼마나 빠르게 돌까요? 추천(50): \n" )
