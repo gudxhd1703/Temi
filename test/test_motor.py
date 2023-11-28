@@ -82,8 +82,8 @@ pwmB = setPinConfig(ENB, IN3, IN4)
 
 # 앞으로 80프로 속도로
 while True:    # 1: front, 2: back
-    setMotor(CH1, 80, 2)
-    setMotor(CH2, 80, 2)
+    setMotor(CH1, 70, 2)
+    setMotor(CH2, 70, 2)
     if (input()):
         break
 #정지

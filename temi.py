@@ -118,18 +118,18 @@ print("Accepted connection from ", client_info)
 
 try:
     while True:
-            client_sock.send("1: 서보모터, 2: dc모터")
+            client_sock.send("1: 서보모터, 2: dc모터\n")
             data = client_sock.recv(1024)
             bluetooth_input = int(data)
             
             match bluetooth_input:  #1서보모터 2dc모터
                 case 1: #서보모터
-                    client_sock.send("1: 크랩워크, 2:폭변환")
+                    client_sock.send("1: 크랩워크, 2:폭변환\n")
                     data = client_sock.recv(1024)
                     bluetooth_input = int(data)
                     match bluetooth_input: #1크랩워크 2폭변환
                         case 1:   #크랩워크
-                            client_sock.send("크랩워크를 위해 서보모터를 몇도로 돌릴까요? (추천 108도): ")
+                            client_sock.send("크랩워크를 위해 서보모터를 몇도로 돌릴까요? (추천 108도): \n")
                             data = client_sock.recv(1024)
                             servo_angle_input = int(data)
                             
@@ -140,7 +140,7 @@ try:
                             rotate_servo(servo4, center_angle)
                             
                         case 2:  #폭변환
-                            client_sock.send("폭변환을 위해 서보모터를 몇도로 돌릴까요? (추천 108도): ")
+                            client_sock.send("폭변환을 위해 서보모터를 몇도로 돌릴까요? (추천 108도): \n")
                             data = client_sock.recv(1024)
                             servo_angle_input = int(data)
                             
@@ -151,13 +151,13 @@ try:
                             rotate_servo(servo4, center_angle)
                     
                 case 2:  #dc모터 # 1: front, 2: back
-                    client_sock.send("얼마나 빠르게 돌까요? 추천(50): " )
+                    client_sock.send("얼마나 빠르게 돌까요? 추천(50): \n" )
                     data = client_sock.recv(1024)
                     dc_speed_input = int(data)
                     
-                    setMotor(CH1, dc_speed_input, 2)
+                    setMotor(CH1, dc_speed_input, 1)
                     setMotor(CH2, dc_speed_input, 1)
-                    client_sock.send("dc모터를 끄려면 아무거나 누르세요")
+                    client_sock.send("dc모터를 끄려면 아무거나 누르세요\n")
                     data = client_sock.recv(1024)
                     setMotor(CH1, 0, 2)
                     setMotor(CH2, 0, 1)
