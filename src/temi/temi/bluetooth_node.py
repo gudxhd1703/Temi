@@ -32,7 +32,7 @@ class BluetoothCommunicationNode(Node):
         data = self.client_sock.recv(1024)  # Buffer size may vary based on your needs
         try:
             try:
-                message = data.decode("utf-8")  ## ascii일수도 decode 안해도 될수도
+                message = data.decode("utf-8")  
                 self.get_logger().info('Publishing: "%s"' % message)
                 msg = BluetoothData()
                 msg.data = message
