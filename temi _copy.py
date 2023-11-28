@@ -8,11 +8,54 @@ import RPi.GPIO as GPIO
 from time import sleep
 import bluetooth
 
+import threading
+
+# 초음파 센서 핀 설정
+TRIG = 20
+ECHO = 21
+
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
+
+# 거리 측정 함수
+def measure_distance():
+    GPIO.output(TRIG, False)
+    time.sleep(0.5)
+
+    GPIO.output(TRIG, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIG, False)
+
+    while GPIO.input(ECHO) == 0:
+        pulse_start = time.time()
+
+    while GPIO.input(ECHO) == 1:
+        pulse_end = time.time()
+
+    pulse_duration = pulse_end - pulse_start
+    distance = pulse_duration * 17150
+    distance = round(distance, 2)
+
+    print("Distance:", distance, "cm")
+    if distance < 20:
+        # 20cm 이내에 물체가 감지되면 모터 정지
+        setMotor(CH1, 0, STOP)
+        setMotor(CH2, 0, STOP)
+
+    # 다음 측정을 위한 타이머 재설정
+    threading.Timer(1.0, measure_distance).start()
+
+# 타이머 시작
+measure_distance()
+
+
 #DC모터
 #모터 상태
 STOP  = 0
 FORWARD  = 1
 BACKWORD = 2
+
+dc_direction = 0
 
 # 모터 채널
 CH1 = 0
@@ -118,59 +161,77 @@ print("Accepted connection from ", client_info)
 
 try:
     while True:
-            client_sock.send("1: 서보모터, 2: dc모터\n")
+            client_sock.send("1: 서보모터(크랩워크), 2: dc모터, 3: 폭변환 \n")
             data = client_sock.recv(1024)
             bluetooth_input = int(data)
-            
-            match bluetooth_input:  #1서보모터 2dc모터
-                case 1: #서보모터
-                    client_sock.send("1: 크랩워크, 2:폭변환\n")
+
+            match bluetooth_input:  #1서보모터(크랩워크) 2dc모터 3폭변환
+                case 1: #서보모터(크랩워크)
+                    client_sock.send("크랩워크를 위해 서보모터를 몇도로 돌릴까요? (추천 108도): \n")
                     data = client_sock.recv(1024)
-                    bluetooth_input = int(data)
-                    match bluetooth_input: #1크랩워크 2폭변환
-                        case 1:   #크랩워크
-                            client_sock.send("크랩워크를 위해 서보모터를 몇도로 돌릴까요? (추천 108도): \n")
-                            data = client_sock.recv(1024)
-                            servo_angle_input = int(data)
-                            
-                            rotate_servo(servo0, servo_angle_input)
-                            rotate_servo(servo1, servo_angle_input)
-                            rotate_servo(servo2, servo_angle_input)
-                            rotate_servo(servo3, servo_angle_input)
-                            rotate_servo(servo4, center_angle)
-                            
-                        case 2:  #폭변환
-                            client_sock.send("폭변환을 위해 서보모터를 몇도로 돌릴까요? (추천 108도): \n")
-                            data = client_sock.recv(1024)
-                            servo_angle_input = int(data)
-                            
-                            rotate_servo(servo0,180- servo_angle_input)
-                            rotate_servo(servo1,servo_angle_input)
-                            rotate_servo(servo2,180- servo_angle_input)
-                            rotate_servo(servo3, servo_angle_input)
-                            rotate_servo(servo4, center_angle)
-                    
+                    servo_angle_input = int(data)
+
+                    rotate_servo(servo0, servo_angle_input)
+                    rotate_servo(servo1, servo_angle_input)
+                    rotate_servo(servo2, servo_angle_input)
+                    rotate_servo(servo3, servo_angle_input)
+                    rotate_servo(servo4, center_angle)
+
                 case 2:  #dc모터 # 1: front, 2: back
                     client_sock.send("얼마나 빠르게 돌까요? 추천(50): \n" )
                     data = client_sock.recv(1024)
                     dc_speed_input = int(data)
-                    
-                    setMotor(CH1, dc_speed_input, 1)
-                    setMotor(CH2, dc_speed_input, 1)
+                    if dc_speed_input >0:
+                        client_sock.send("전진합니다. \n" )
+                        dc_direction = 1
+                    elif dc_speed_input <0:
+                        client_sock.send("후진합니다. \n" )
+                        dc_direction = 2
+                    setMotor(CH1, dc_speed_input, dc_direction)
+                    setMotor(CH2, dc_speed_input, dc_direction)
                     client_sock.send("dc모터를 끄려면 아무거나 누르세요\n")
                     data = client_sock.recv(1024)
                     setMotor(CH1, 0, 2)
                     setMotor(CH2, 0, 1)
+
+                case 3: #폭변환
+                    client_sock.send("폭변환을 위해 서보모터를 몇도로 돌릴까요? (추천 108도): \n")
+                    data = client_sock.recv(1024)
+                    servo_angle_input = int(data)
+
+                    rotate_servo(servo0,180- servo_angle_input)
+                    rotate_servo(servo1,servo_angle_input)
+                    rotate_servo(servo2,180- servo_angle_input)
+                    rotate_servo(servo3, servo_angle_input)
+                    rotate_servo(servo4, center_angle)
+
+                    client_sock.send("폭변환 상태에서 dc모터를 돌릴까요? 1:예 2:아니오(메인으로) \n")
+                    data = client_sock.recv(1024)
+                    bluetooth_input = int(data)
+                    if bluetooth_input == 2:
+                        continue
+                    else:
+                        client_sock.send("얼마나 빠르게 돌까요? 추천(50): \n" )
+                        data = client_sock.recv(1024)
+                        dc_speed_input = int(data)
+                        setMotor(CH1, dc_speed_input, 1)
+                        setMotor(CH2, dc_speed_input, 2)
+
+                        client_sock.send("dc모터를 끄려면 아무거나 누르세요\n")
+                        data = client_sock.recv(1024)
+                        setMotor(CH1, 0, 2)
+                        setMotor(CH2, 0, 1)
+
                 case _:
                     continue
 
 except KeyboardInterrupt:
     print('exit')
-    
+
 finally:
     pca.deinit()
     GPIO.cleanup()
     client_sock.close()
     server_sock.close()
-    
-    
+
+
