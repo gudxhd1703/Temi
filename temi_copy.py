@@ -14,41 +14,6 @@ import threading
 TRIG = 20
 ECHO = 21
 
-GPIO.setup(TRIG, GPIO.OUT)
-GPIO.setup(ECHO, GPIO.IN)
-
-# 거리 측정 함수
-def measure_distance():
-    GPIO.output(TRIG, False)
-    time.sleep(0.5)
-
-    GPIO.output(TRIG, True)
-    time.sleep(0.00001)
-    GPIO.output(TRIG, False)
-
-    while GPIO.input(ECHO) == 0:
-        pulse_start = time.time()
-
-    while GPIO.input(ECHO) == 1:
-        pulse_end = time.time()
-
-    pulse_duration = pulse_end - pulse_start
-    distance = pulse_duration * 17150
-    distance = round(distance, 2)
-
-    print("Distance:", distance, "cm")
-    if distance < 20:
-        # 20cm 이내에 물체가 감지되면 모터 정지
-        setMotor(CH1, 0, STOP)
-        setMotor(CH2, 0, STOP)
-
-    # 다음 측정을 위한 타이머 재설정
-    threading.Timer(1.0, measure_distance).start()
-
-# 타이머 시작
-measure_distance()
-
-
 #DC모터
 #모터 상태
 STOP  = 0
@@ -127,6 +92,44 @@ GPIO.setmode(GPIO.BCM)
 #핀 설정후 PWM 핸들 얻어옴
 pwmA = setPinConfig(ENA, IN1, IN2)
 pwmB = setPinConfig(ENB, IN3, IN4)
+
+
+
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
+
+# 거리 측정 함수
+def measure_distance():
+    GPIO.output(TRIG, False)
+    time.sleep(0.5)
+
+    GPIO.output(TRIG, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIG, False)
+
+    while GPIO.input(ECHO) == 0:
+        pulse_start = time.time()
+
+    while GPIO.input(ECHO) == 1:
+        pulse_end = time.time()
+
+    pulse_duration = pulse_end - pulse_start
+    distance = pulse_duration * 17150
+    distance = round(distance, 2)
+
+    print("Distance:", distance, "cm")
+    if distance < 20:
+        # 20cm 이내에 물체가 감지되면 모터 정지
+        setMotor(CH1, 0, STOP)
+        setMotor(CH2, 0, STOP)
+
+    # 다음 측정을 위한 타이머 재설정
+    threading.Timer(1.0, measure_distance).start()
+
+# 타이머 시작
+measure_distance()
+
+
 
 #서보모터
 i2c = busio.I2C(SCL, SDA)
